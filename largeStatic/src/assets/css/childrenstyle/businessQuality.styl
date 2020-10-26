@@ -1,0 +1,327 @@
+.business{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("./../img/businessQualityb.png") no-repeat;
+    background-size: 100% 100%;
+    .business_left{
+        position: absolute;
+        top: 0;
+        left: 5%;
+        width: 23%;
+        height: 95%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        // border: 1px solid red;
+        // padding-top: 7.9%;
+        // padding-bottom: 3%;
+        .MOS{
+            width: 100%;
+            display: flex;
+            flex: 4;
+            align-items: flex-end;
+            .MOS_box{
+                display: flex;
+                width: 100%;
+                height: 64%;
+                flex-direction: column;
+                .MOS_title{
+                    display: flex;
+                    flex: 1;
+                    height: 100%;
+                    padding-left: 25%;
+                    span{
+                        background: url("./../img/dik.png") no-repeat;
+                        background-size: 100% 100%; 
+                        display: flex;
+                        height: 100%;
+                        justify-content: center;
+                        .MOS_size{
+                            display: flex;
+                            color: #fff;
+                            font-size: 24px;
+                            padding: 5px 15px;
+                            align-items: center;
+                            white-space:nowrap;
+                        }
+                        .active{
+                            background: url("./../img/xuanz.png") no-repeat center center;
+                            background-size: 100% 100%;
+                            color: #33cdda;   
+                        }
+                    }   
+                }
+                .progressbox{
+                    display: flex;
+                    flex: 10;
+                    flex-direction: column;
+                    padding-top: 2%;
+                    li{
+                        width: 100%;
+                        display: flex;
+                        .progressTitle{
+                            margin-top: 15px;
+                            flex: 1;
+                            display: flex;
+                            white-space:nowrap;
+                            overflow: hidden;
+                            align-items: flex-end;
+                            height: 65px;
+                            color: #fff;
+                            font-style: italic;
+                            font-size: 24px;
+                        }
+                        span{
+                            flex: 6;
+                            margin-top: 15px;
+                            display: flex;
+                            height: 65px;
+                            position: relative;
+                            width: 85%;
+                            align-items: flex-end;
+                            // border: 1px solid red;
+                            small{
+                                width: 0%;
+                                height: 35px;
+                                display: flex;
+                                position: relative;
+                                box-sizing: border-box;
+                                background: #2562ff;
+                                border-radius: 15px;
+                                align-items: center;
+                                justify-content: flex-end;
+                                padding-right: 10px;
+                                color: #fff;
+                                i{
+                                    position: absolute;
+                                    height: 40px;
+                                    line-height: 40px;
+                                    top: 0;
+                                    font-size: 22px;
+                                    right: 10px;
+                                }
+
+                            }
+                            
+                        }
+                    }
+                }  
+            }
+              
+        }
+        .uccessRate{
+            display: flex;
+            width: 100%;
+            flex: 4.1;
+            align-items: flex-end;
+            .uccessRateBox{
+                display: flex;
+                width: 100%;
+                height: 71%;
+                flex-direction: column;
+            }
+            .uccessRateChart{
+                display: flex;
+                flex: 1;
+            }
+            .uccessCont{
+                display: flex;
+                flex-basis: 20%;
+                justify-content: space-around;
+                .RateChart{
+                    // width: 27%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    .RateChartcolor{
+                        width: 15px;
+                        height: 15px;
+                        background: #0fccff;
+                    }
+                    .RateChartBox{
+                        padding-left: 10px;
+                        display: flex;
+                        flex-direction: column;
+                        span{
+                            font-size: 22px;
+                            line-height: 30px;
+                        }
+                        span:first-child{
+                            color: #fff;
+                            font-size: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .business_center{
+        width: 37%;
+        position: absolute;
+        left: 32%;
+        height: 100%;
+        box-sizing: border-box;
+        display: flex;
+        
+        flex-direction: column;
+        .proportion_types{
+            display: flex;
+            // flex: 1.0;
+            height: 60%;
+            width: 95%;
+            align-items: flex-end;
+            .proportionBox{
+                display: flex;
+                width: 100%;
+                height: 80%;
+                flex-direction: column;
+                .proportion_title{
+                    display: flex;
+                    height: 9%;
+                    box-sizing: border-box;
+                    // flex: 0.9;
+                    margin-left: 37%;
+                    span{
+                        display: flex;
+                        height: 100%;
+                        align-items: flex-end;
+                        border-bottom: 1px solid #0F3480;
+                        a{
+                            display: flex;
+                            color: #fff;
+                            font-size: 24px;
+                            padding 2% 4% 2% 4%;
+                            white-space:nowrap;
+                            margin-left: 4px;
+                            background: url("./../img/proportion_title.png") no-repeat;
+                            background-size: 100% 100%;
+                        }
+                        .active{
+                            background: url("./../img/proportion_titleactive.png") no-repeat;
+                            background-size: 100% 100%;
+                            color: #20d9ef;
+                        }
+                        
+                    }
+                }
+                .second_title{
+                    display: flex;
+                    // flex: 1.3;
+                    height: 9%
+                    justify-content: center;
+                    align-items: flex-end;
+                    span{
+                        display: flex;
+                        background: url("./../img/dik.png") no-repeat;
+                        background-size: 100% 100%;
+                        a{
+                            display: flex;
+                            padding 8px 15px 8px 15px;
+                            white-space:nowrap;
+                            font-size: 23px;
+                            color: #fff;
+                        }
+                        .active{
+                            background: url("./../img/xuanz.png") no-repeat;
+                            background-size: 100% 100%;
+                        } 
+                    }
+                }
+                .typesEchartstyl{
+                    display: flex;
+                    // flex: 10;
+                    height: 82%;
+                    background-size: 100% 100%;
+                    width: 74%;
+                    justify-content: center;
+                    margin-left: 13.2%;
+                    box-sizing: border-box;
+                    position: relative;
+                    .typesEchartBg{
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                    .typesEchart{
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        left: 0;
+                        top: 0;  
+                    }
+                }
+            }
+            
+        } 
+        .request{
+            width: 100%;
+            display: flex;
+            // flex: 1.1;
+            height: 40%;
+            flex-direction: column;
+            .requestTitle{
+                display: flex;
+                flex: 1.5;
+                align-items: flex-start;
+                span{
+                    display: flex;
+                    background: blue;
+                    margin-left: 33%;
+                    background: url("./../img/dik.png") no-repeat;
+                    background-size: 100% 100%;
+                    a{
+                        display: flex;
+                        padding 7px 15px;
+                        font-size: 24px;
+                        color: #fff;
+                    }
+                    .active{
+                        background: url("./../img/xuanz.png") no-repeat;
+                        background-size: 100% 100%;
+                    } 
+                }  
+            }
+            .requestDelay{
+                display: flex;
+                flex: 10;    
+            }   
+        }   
+    }
+    .business_right{
+        display: flex;
+        position: absolute;
+        right: 4%;
+        width: 26%;
+        // padding-top: 5%;
+        // border: 1px solid red;
+        top: 0;
+        height: 100%;
+        flex-direction: column;
+        box-sizing: border-box;
+        .userAnalysis{
+            display: flex;
+            flex: 0.9;
+            box-sizing: border-box;
+            align-items: flex-end;
+            .userEchart{
+                display: flex;
+                width: 100%;
+                height: 67%;
+                // border: 1px solid yellow;    
+            } 
+        }
+        .CDN_hitRate{
+            display: flex;
+            flex: 1;
+            align-items: center;
+            .hitRateEcharts{
+                display: flex;
+                box-sizing: border-box;
+                width: 100%;
+                height: 80%; 
+            }
+            
+        }
+         
+    }
+}

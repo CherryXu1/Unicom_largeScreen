@@ -1,0 +1,4883 @@
+<!DOCTYPE html>
+      <html>
+      <head>
+      <title>BI6.2.0大屏</title>
+      <meta charset="utf-8" />
+      <style>@charset "UTF-8";
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* 外层轨道 */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset006pxrgba(255, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset006pxrgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
+  font-size: 13px;
+  line-height: 25px;
+  color: #393838;
+  position: relative;
+}
+
+table {
+  margin: 10px 0 15px 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 3px 10px;
+}
+
+th {
+  padding: 5px 10px;
+}
+
+a, a:link, a:visited {
+  color: #34495e;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #59d69d;
+  text-decoration: none;
+}
+
+a img {
+  border: none;
+}
+
+p {
+  padding-left: 10px;
+  margin-bottom: 9px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #404040;
+  line-height: 36px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 28px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+h3 {
+  clear: both;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-left: 3px solid #59d69d;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 13px;
+}
+
+hr {
+  margin: 0 0 19px;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+blockquote {
+  padding: 13px 13px 21px 15px;
+  margin-bottom: 18px;
+  font-family: georgia, serif;
+  font-style: italic;
+}
+
+blockquote:before {
+  font-size: 40px;
+  margin-left: -10px;
+  font-family: georgia, serif;
+  color: #eee;
+}
+
+blockquote p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+code,
+pre {
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+
+code {
+  background-color: #fee9cc;
+  color: rgba(0, 0, 0, 0.75);
+  padding: 1px 3px;
+  font-size: 12px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+pre {
+  display: block;
+  padding: 14px;
+  margin: 0 0 18px;
+  line-height: 16px;
+  font-size: 11px;
+  border: 1px solid #d9d9d9;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background: #f6f6f6;
+}
+
+pre code {
+  background-color: #f6f6f6;
+  color: #737373;
+  font-size: 11px;
+  padding: 0;
+}
+
+sup {
+  font-size: 0.83em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+* {
+  -webkit-print-color-adjust: exact;
+}
+
+@media print {
+  body,
+  code,
+  pre code,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: black;
+  }
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+.table-of-contents {
+  position: fixed;
+  top: 61px;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 260px;
+}
+
+.table-of-contents > ul > li > a {
+  font-size: 20px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.table-of-contents ul {
+  overflow: auto;
+  margin: 0px;
+  height: 100%;
+  padding: 0px 0px;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.table-of-contents ul li {
+  padding-left: 20px;
+}
+
+.table-of-contents a {
+  padding: 2px 0px;
+  display: block;
+  text-decoration: none;
+}
+
+.content-right {
+  max-width: 700px;
+  margin-left: 290px;
+  padding-left: 70px;
+  flex-grow: 1;
+}
+.content-right h2:target {
+  padding-top: 80px;
+}
+
+body > p {
+  margin-left: 30px;
+}
+
+body > table {
+  margin-left: 30px;
+}
+
+body > pre {
+  margin-left: 30px;
+}
+
+.curProject {
+  position: fixed;
+  top: 20px;
+  font-size: 25px;
+  color: black;
+  margin-left: -240px;
+  width: 240px;
+  padding: 5px;
+  line-height: 25px;
+  box-sizing: border-box;
+}
+
+.g-doc {
+  margin-top: 56px;
+  padding-top: 24px;
+  display: flex;
+}
+
+.curproject-name {
+  font-size: 42px;
+}
+
+.m-header {
+  background: #32363a;
+  height: 56px;
+  line-height: 56px;
+  padding-left: 60px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.m-header .title {
+  font-size: 22px;
+  color: #fff;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  margin-left: 16px;
+  padding: 0;
+  line-height: 56px;
+  border: none;
+}
+.m-header .nav {
+  color: #fff;
+  font-size: 16px;
+  position: absolute;
+  right: 32px;
+  top: 0;
+}
+.m-header .nav a {
+  color: #fff;
+  margin-left: 16px;
+  padding: 8px;
+  transition: color .2s;
+}
+.m-header .nav a:hover {
+  color: #59d69d;
+}
+
+.m-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/*# sourceMappingURL=defaultTheme.css.map */
+</style>
+      </head>
+      <body>
+        <div class="m-header">
+          <a href="#" style="display: inherit;"><svg class="svg" width="32px" height="32px" viewBox="0 0 64 64" version="1.1"><title>Icon</title><desc>Created with Sketch.</desc><defs><linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1"><stop stop-color="#FFFFFF" offset="0%"></stop><stop stop-color="#F2F2F2" offset="100%"></stop></linearGradient><circle id="path-2" cx="31.9988602" cy="31.9988602" r="2.92886048"></circle><filter x="-85.4%" y="-68.3%" width="270.7%" height="270.7%" filterUnits="objectBoundingBox" id="filter-3"><feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur><feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.159703351 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix></filter></defs><g id="首页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="大屏幕"><g id="Icon"><circle id="Oval-1" fill="url(#linearGradient-1)" cx="32" cy="32" r="32"></circle><path d="M36.7078009,31.8054514 L36.7078009,51.7110548 C36.7078009,54.2844537 34.6258634,56.3695395 32.0579205,56.3695395 C29.4899777,56.3695395 27.4099998,54.0704461 27.4099998,51.7941246 L27.4099998,31.8061972 C27.4099998,29.528395 29.4909575,27.218453 32.0589004,27.230043 C34.6268432,27.241633 36.7078009,29.528395 36.7078009,31.8054514 Z" id="blue" fill="#2359F1" fill-rule="nonzero"></path><path d="M45.2586091,17.1026914 C45.2586091,17.1026914 45.5657231,34.0524383 45.2345291,37.01141 C44.9033351,39.9703817 43.1767091,41.6667796 40.6088126,41.6667796 C38.040916,41.6667796 35.9609757,39.3676862 35.9609757,37.0913646 L35.9609757,17.1034372 C35.9609757,14.825635 38.0418959,12.515693 40.6097924,12.527283 C43.177689,12.538873 45.2586091,14.825635 45.2586091,17.1026914 Z" id="green" fill="#57CF27" fill-rule="nonzero" transform="translate(40.674608, 27.097010) rotate(60.000000) translate(-40.674608, -27.097010) "></path><path d="M28.0410158,17.0465598 L28.0410158,36.9521632 C28.0410158,39.525562 25.9591158,41.6106479 23.3912193,41.6106479 C20.8233227,41.6106479 18.7433824,39.3115545 18.7433824,37.035233 L18.7433824,17.0473055 C18.7433824,14.7695034 20.8243026,12.4595614 23.3921991,12.4711513 C25.9600956,12.4827413 28.0410158,14.7695034 28.0410158,17.0465598 Z" id="red" fill="#FF561B" fill-rule="nonzero" transform="translate(23.392199, 27.040878) rotate(-60.000000) translate(-23.392199, -27.040878) "></path><g id="inner-round"><use fill="black" fill-opacity="1" filter="url(#filter-3)" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use><use fill="#F7F7F7" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#path-2"></use></g></g></g></g></svg></a>
+          <a href="#"><h1 class="title">YAPI 接口文档</h1></a>
+          <div class="nav">
+            <a href="https://yapi.ymfe.org/">YApi</a>
+          </div>
+        </div>
+        <div class="g-doc">
+          <div class="table-of-contents"><ul><li><a href="#u4e1au52a1u603bu89c8">业务总览</a><ul><li><a href="#u67e5u8be224u5c0fu65f6u6536u89c60a3ca20id3du67e5u8be224u5c0fu65f6u6536u89c63e203ca3e">查询24小时收视
+<a id=查询24小时收视> </a></a></li><li><a href="#u67e5u8be2u5f00u673au60c5u51b50a3ca20id3du67e5u8be2u5f00u673au60c5u51b53e203ca3e">查询开机情况
+<a id=查询开机情况> </a></a></li><li><a href="#u67e5u8be2u6536u89c6u6392u884cu699c0a3ca20id3du67e5u8be2u6536u89c6u6392u884cu699c3e203ca3e">查询收视排行榜
+<a id=查询收视排行榜> </a></a></li><li><a href="#u67e5u8be2u7528u6237u6982u89c80a3ca20id3du67e5u8be2u7528u6237u6982u89c83e203ca3e">查询用户概览
+<a id=查询用户概览> </a></a></li><li><a href="#u67e5u8be2u7528u6237u6d3bu8dc30a3ca20id3du67e5u8be2u7528u6237u6d3bu8dc33e203ca3e">查询用户活跃
+<a id=查询用户活跃> </a></a></li></ul></li><li><a href="#u4e1au52a1u8ba2u8d2d">业务订购</a><ul><li><a href="#u67e5u8be2u4ea7u54c1u8ba2u8d2dtopn0a3ca20id3du67e5u8be2u4ea7u54c1u8ba2u8d2dtopn3e203ca3e">查询产品订购TopN
+<a id=查询产品订购TopN> </a></a></li><li><a href="#u67e5u8be2u533au57dfarupu503c0a3ca20id3du67e5u8be2u533au57dfarupu503c3e203ca3e">查询区域ARUP值
+<a id=查询区域ARUP值> </a></a></li><li><a href="#u67e5u8be2u533au57dfu652fu4ed8u4fe1u606f0a3ca20id3du67e5u8be2u533au57dfu652fu4ed8u4fe1u606f3e203ca3e">查询区域支付信息
+<a id=查询区域支付信息> </a></a></li><li><a href="#u67e5u8be2u533au57dfu6d3bu8dc3u8ba2u8d2du7528u62370a3ca20id3du67e5u8be2u533au57dfu6d3bu8dc3u8ba2u8d2du7528u62373e203ca3e">查询区域活跃订购用户
+<a id=查询区域活跃订购用户> </a></a></li><li><a href="#u67e5u8be2u533au57dfu8ba2u8d2du4fe1u606f0a3ca20id3du67e5u8be2u533au57dfu8ba2u8d2du4fe1u606f3e203ca3e">查询区域订购信息
+<a id=查询区域订购信息> </a></a></li></ul></li><li><a href="#u4e1au52a1u6536u89c6">业务收视</a><ul><li><a href="#u67e5u8be2epgu6d4fu89c8u6392u884c0a3ca20id3du67e5u8be2epgu6d4fu89c8u6392u884c3e203ca3e">查询EPG浏览排行
+<a id=查询EPG浏览排行> </a></a></li><li><a href="#u67e5u8be2u56deu770bu9891u9053u6536u89c6u6392u884c0a3ca20id3du67e5u8be2u56deu770bu9891u9053u6536u89c6u6392u884c3e203ca3e">查询回看频道收视排行
+<a id=查询回看频道收视排行> </a></a></li><li><a href="#u67e5u8be2u70b9u64adu8282u76eeu6536u89c6u6392u884c0a3ca20id3du67e5u8be2u70b9u64adu8282u76eeu6536u89c6u6392u884c3e203ca3e">查询点播节目收视排行
+<a id=查询点播节目收视排行> </a></a></li><li><a href="#u67e5u8be2u76f4u64adu9891u9053u6536u89c6u6392u884c0a3ca20id3du67e5u8be2u76f4u64adu9891u9053u6536u89c6u6392u884c3e203ca3e">查询直播频道收视排行
+<a id=查询直播频道收视排行> </a></a></li></ul></li><li><a href="#u7528u6237u53d1u5c55">用户发展</a><ul><li><a href="#u67e5u8be2u4e0du540cu5e74u9f84u6bb5u5f00u673au7528u62370a3ca20id3du67e5u8be2u4e0du540cu5e74u9f84u6bb5u5f00u673au7528u62373e203ca3e">查询不同年龄段开机用户
+<a id=查询不同年龄段开机用户> </a></a></li><li><a href="#u67e5u8be2u4e0du540cu7f51u7edcu63a5u5165u7528u6237u5360u6bd40a3ca20id3du67e5u8be2u4e0du540cu7f51u7edcu63a5u5165u7528u6237u5360u6bd43e203ca3e">查询不同网络接入用户占比
+<a id=查询不同网络接入用户占比> </a></a></li><li><a href="#u67e5u8be2u533au57dfu7528u6237u65700a3ca20id3du67e5u8be2u533au57dfu7528u6237u65703e203ca3e">查询区域用户数
+<a id=查询区域用户数> </a></a></li><li><a href="#u67e5u8be2u5728u7ebfu60c5u51b50a3ca20id3du67e5u8be2u5728u7ebfu60c5u51b53e203ca3e">查询在线情况
+<a id=查询在线情况> </a></a></li><li><a href="#u67e5u8be2u7528u6237u53d1u5c550a3ca20id3du67e5u8be2u7528u6237u53d1u5c553e203ca3e">查询用户发展
+<a id=查询用户发展> </a></a></li></ul></li><li><a href="#u4e1au52a1u8d28u91cf">业务质量</a><ul><li><a href="#u67e5u8be2u89c6u9891u8d28u91cf0a3ca20id3du67e5u8be2u89c6u9891u8d28u91cf3e203ca3e">查询视频质量
+<a id=查询视频质量> </a></a></li><li><a href="#u67e5u8be2u8d28u5deeu7528u62370a3ca20id3du67e5u8be2u8d28u5deeu7528u62373e203ca3e">查询质差用户
+<a id=查询质差用户> </a></a></li><li><a href="#u67e5u8be2u4e1au52a1u4ea4u4e92u65f6u5ef60a3ca20id3du67e5u8be2u4e1au52a1u4ea4u4e92u65f6u5ef63e203ca3e">查询业务交互时延
+<a id=查询业务交互时延> </a></a></li><li><a href="#u67e5u8be2u4e1au52a1u4ea4u4e92u6210u529fu73870a3ca20id3du67e5u8be2u4e1au52a1u4ea4u4e92u6210u529fu73873e203ca3e">查询业务交互成功率
+<a id=查询业务交互成功率> </a></a></li><li><a href="#u67e5u8be2cdnu4ea4u4e92u8d28u91cf0a3ca20id3du67e5u8be2cdnu4ea4u4e92u8d28u91cf3e203ca3e">查询CDN交互质量
+<a id=查询CDN交互质量> </a></a></li><li><a href="#u67e5u8be2u5185u5bb9u6e05u6670u5ea60a3ca20id3du67e5u8be2u5185u5bb9u6e05u6670u5ea63e203ca3e">查询内容清晰度
+<a id=查询内容清晰度> </a></a></li></ul></li><li><a href="#u516cu5171">公共</a><ul><li><a href="#u5730u533au4ee3u7801u88680a3ca20id3du5730u533au4ee3u7801u88683e203ca3e">地区代码表
+<a id=地区代码表> </a></a></li><li><a href="#u9519u8befu4ee3u7801u88680a3ca20id3du9519u8befu4ee3u7801u88683e203ca3e">错误代码表
+<a id=错误代码表> </a></a></li></ul></li><li><a href="#u7528u6237u7ba1u7406">用户管理</a><ul><li><a href="#u7528u6237u767bu96460a3ca20id3du7528u6237u767bu96463e203ca3e">用户登陆
+<a id=用户登陆> </a></a></li></ul></li></ul></div>
+          <div id="right" class="content-right">
+           <h1 class="curproject-name"> BI6.2.0大屏 </h1> 
+<h1 id="u4e1au52a1u603bu89c8">业务总览</h1>
+<p></p>
+<h2 id="u67e5u8be224u5c0fu65f6u6536u89c60a3ca20id3du67e5u8be224u5c0fu65f6u6536u89c63e203ca3e">查询24小时收视
+<a id=查询24小时收视> </a></h2>
+<p></p>
+<h3 id="">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：按小时查询全国24小时用户收视情况，收视人数，收视次数和收视时长，按照日期，时段倒序排序。时间范围为指定时间范围，默认最近7天<br>
+描述：用户24小时收视取自bto_c3.BKR_USER_USERVIEWH24，选出最近七天，并根据hourid分组聚合<br>
+接口类型：Oracle</p>
+<h3 id="-2">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryHourUserView</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>starttime</td>
+<td>text</td>
+<td>是</td>
+<td>20200101</td>
+<td>开始日期，格式YYYYMMDD</td>
+</tr>
+<tr>
+<td>endtime</td>
+<td>text</td>
+<td>是</td>
+<td>20200107</td>
+<td>结束日期，格式YYYYMMDD</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-3">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> MONTHDAY</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">日期，格式YYYYMMDD</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> HOURID</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">24小时时段，值为0~23</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视人数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWCOUNT</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWTIME</span></td><td key=1><span>number</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视时长</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u5f00u673au60c5u51b50a3ca20id3du67e5u8be2u5f00u673au60c5u51b53e203ca3e">查询开机情况
+<a id=查询开机情况> </a></h2>
+<p></p>
+<h3 id="-4">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：查询区域用户开机情况，时间范围为最近一天<br>
+描述：首先开机率=区域内开机用户数/区域内总用户数，其中开机用户数取自bto_c3.bkr_user_useractivity的bootuser，区域用户数取自BKR_R002_USERAREATREND的user012，只需要两表按照areacode分组后sum指定的字段，并关联上区域信息表bkrvw_cfg_cucc_areacode即可得到areaname。<br>
+数据来源：用户活跃 bto_c3.bkr_user_useractivity，用户发展BKR_R002_USERAREATREND<br>
+接口类型：Oracle</p>
+<h3 id="-5">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaBootUser</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-6">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域总用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> BOOTUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域开机用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> BOOTRATE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域开机率</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u6536u89c6u6392u884cu699c0a3ca20id3du67e5u8be2u6536u89c6u6392u884cu699c3e203ca3e">查询收视排行榜
+<a id=查询收视排行榜> </a></h2>
+<p></p>
+<h3 id="-7">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：查询直播，点播，回看收视排行榜，时间范围为最近一天<br>
+描述：根据viewtype不同查询不同的数据源，收视类型，1：直播，2：点播，3：回看。<br>
+其中直播节目取自bi_viewlog_c3.BKR_CHANNEL_SCHEDULE_LIANTONG_HISTORY,点播取自bi_viewlog_c3.bkr_vod_view_history，回看取自bi_viewlog_c3.bkr_tvodtvbyvod_history<br>
+其中点播节目名取自bi_viewlog_c3.view_pl_vsp_media_hadoop_history，回看节目名来自bi_viewlog_c3.bkr_schedule<br>
+接口类型：Presto</p>
+<h3 id="-8">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryViewTopN</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>viewtype</td>
+<td>text</td>
+<td>是</td>
+<td>1</td>
+<td>收视类型，1：直播，2：点播，3：回看</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-9">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PROGRAMNAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">节目名称</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> CHANNELNAME</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">频道名称，viewtype=1或3时有效</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> RTG</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视率，viewtype=1有效</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> RATIO</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视占比viewtype=2或3有效</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> viewuser</span></td><td key=1><span>number</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视人数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u7528u6237u6982u89c80a3ca20id3du67e5u8be2u7528u6237u6982u89c83e203ca3e">查询用户概览
+<a id=查询用户概览> </a></h2>
+<p></p>
+<h3 id="-10">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：查询用户概览信息，包括总用户数、开机用户数和各种收视用户数（直播、点播、回看和EPG）,时间范围为最近一天<br>
+描述：总用户数来自bkr_r002_userareatrend的user012，开机用户数来自bto_c3.bkr_user_useractivity的bootuser，各种收视用户数来自bto_c3.bkr_userportrait_view_type的tvoduser，liveuser，voduser和tsuser<br>
+取以上三张表的最新一天的数据进行sum关联上即可<br>
+注意：没有epg的收视<br>
+接口类型：Oracle</p>
+<h3 id="-11">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryUserOverview</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-12">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总用户数</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> BOOTUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">开机用户数</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> LIVETVUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">直播用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VODUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">点播用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TVODUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">回看用户数</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> EPGUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">EPG用户数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u7528u6237u6d3bu8dc30a3ca20id3du67e5u8be2u7528u6237u6d3bu8dc33e203ca3e">查询用户活跃
+<a id=查询用户活跃> </a></h2>
+<p></p>
+<h3 id="-13">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：按省份查询用户月活跃情况，时间范围为最近一月<br>
+描述：活跃用户取自bto_c3.bkr_user_useractivity的activeuser，区域用户数取自BKR_R002_USERAREATREND的user012<br>
+用以上两表根据areacode分组sum后，并根据areacode两表关联。其种活跃用户比=活跃用户/用户总数<br>
+接口类型：Oracle</p>
+<h3 id="-14">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaActiveUser</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-15">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域总用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ACTIVEUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域活跃用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> RATIO</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">活跃用户占比</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u4e1au52a1u8ba2u8d2d">业务订购</h1>
+<p></p>
+<h2 id="u67e5u8be2u4ea7u54c1u8ba2u8d2dtopn0a3ca20id3du67e5u8be2u4ea7u54c1u8ba2u8d2dtopn3e203ca3e">查询产品订购TopN
+<a id=查询产品订购TopN> </a></h2>
+<p></p>
+<h3 id="-16">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询产品订购金额TopN，时间范围为最近一天。</p>
+<h3 id="-17">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryProductOrderTopN</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>test1</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>00699780e98bb340761e0f285c2bedbe</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-18">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PRODUCTCODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">产品代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PRODUCTNAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">产品名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">订购用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ORDERTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">订购次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AMOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">订购金额，单位：元</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u533au57dfarupu503c0a3ca20id3du67e5u8be2u533au57dfarupu503c3e203ca3e">查询区域ARUP值
+<a id=查询区域ARUP值> </a></h2>
+<p></p>
+<h3 id="-19">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>按省份查询用户支付情况，包括支付人数，支付次数，支付金额。时间范围为最近7个月。</p>
+<h3 id="-20">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaArpu</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-21">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">有效用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AMOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收入金额</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ARPU</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">ARPU值，单位：元</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> MONTHDAY</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">每月1日</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u533au57dfu652fu4ed8u4fe1u606f0a3ca20id3du67e5u8be2u533au57dfu652fu4ed8u4fe1u606f3e203ca3e">查询区域支付信息
+<a id=查询区域支付信息> </a></h2>
+<p></p>
+<h3 id="-22">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>按省份查询用户支付情况，包括支付人数，支付次数，支付金额。金额大于0且时间范围为最近一天。</p>
+<h3 id="-23">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaPayment</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-24">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域支付用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PAYTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域用户支付次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AMOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域用户支付金额，单位：元</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PRODUCTTYPE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">产品类型0：所有，1：应用视频，2：娱乐视频，3：沃家影视</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u533au57dfu6d3bu8dc3u8ba2u8d2du7528u62370a3ca20id3du67e5u8be2u533au57dfu6d3bu8dc3u8ba2u8d2du7528u62373e203ca3e">查询区域活跃订购用户
+<a id=查询区域活跃订购用户> </a></h2>
+<p></p>
+<h3 id="-25">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>按省份查询订购且使用过业务的用户，返回订购用户数，活跃用户数。时间范围为最近一天，一周或一月。</p>
+<h3 id="-26">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaActiveOrder</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-27">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ORDERUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">日区域订购用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ORDERUSER_WEEK</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">周区域订购用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ORDERUSER_MONTH</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">月区域订购用户数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u533au57dfu8ba2u8d2du4fe1u606f0a3ca20id3du67e5u8be2u533au57dfu8ba2u8d2du4fe1u606f3e203ca3e">查询区域订购信息
+<a id=查询区域订购信息> </a></h2>
+<p></p>
+<h3 id="-28">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>按省份查询用户订购情况，包括订购人数，订购次数，订购金额和占比。时间范围为最近一天。</p>
+<h3 id="-29">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaOrder</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-30">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域订购用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ORDERTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域用户订购次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AMOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域用户订购金额，单位：元</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> RATIO</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">订购金额占比</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u4e1au52a1u6536u89c6">业务收视</h1>
+<p></p>
+<h2 id="u67e5u8be2epgu6d4fu89c8u6392u884c0a3ca20id3du67e5u8be2epgu6d4fu89c8u6392u884c3e203ca3e">查询EPG浏览排行
+<a id=查询EPG浏览排行> </a></h2>
+<p></p>
+<h3 id="-31">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color: rgb(85, 85, 85);">功能：</span>查询浏览排行榜，包括EPG页面，浏览次数和浏览人数。时间范围为最近一天。<br>
+<span class="colour" style="color: rgb(85, 85, 85);">描述：epg目前没有数据</span><br>
+<span class="colour" style="color: rgb(85, 85, 85);">接口类型：Presto</span></p>
+<h3 id="-32">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryEpgTopN</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101</td>
+<td>地区代码，参见地区代码表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-33">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PAGENAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">频道名称</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">浏览人数</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">浏览次数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u56deu770bu9891u9053u6536u89c6u6392u884c0a3ca20id3du67e5u8be2u56deu770bu9891u9053u6536u89c6u6392u884c3e203ca3e">查询回看频道收视排行
+<a id=查询回看频道收视排行> </a></h2>
+<p></p>
+<h3 id="-34">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p><span class="colour" style="color: rgb(85, 85, 85);">功能：查询</span>回看频道<span class="colour" style="color: rgb(85, 85, 85);">收视时长排行榜，</span>包括频道名称，收视人数，收视次数和收视时长。时间范围为最近一天。<br>
+<span class="colour" style="color: rgb(85, 85, 85);">描述：</span>回看频道<span class="colour" style="color: rgb(85, 85, 85);">内容在bi_viewlog_c3.</span>bkr_tvodtvbyvod_history<span class="colour" style="color: rgb(85, 85, 85);">中，可以根据substr(a.areacode,1,3)为条件判断记录属于哪个省</span><br>
+<span class="colour" style="color: rgb(85, 85, 85);">接口类型：Presto</span></p>
+<h3 id="-35">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryTvodTopN</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101</td>
+<td>地区代码，参见地区代码表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-36">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> CHANNELNAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">频道名称</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视人数</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视次数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWDURATION</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视时长，单位：小时</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u70b9u64adu8282u76eeu6536u89c6u6392u884c0a3ca20id3du67e5u8be2u70b9u64adu8282u76eeu6536u89c6u6392u884c3e203ca3e">查询点播节目收视排行
+<a id=查询点播节目收视排行> </a></h2>
+<p></p>
+<h3 id="-37">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：查询点播节目收视时长排行榜，包括收视人数，收视次数和收视时长。时间范围为最近一天。<br>
+描述：点播<span class="colour" style="color: rgb(85, 85, 85);">收视内容在bi_viewlog_c3.</span>bkr_vod_view_history<span class="colour" style="color: rgb(85, 85, 85);">中，可以根据substr(a.areacode,1,3)为条件判断记录属于哪个省，节目名取自</span>view_pl_vsp_media_hadoop_history<br>
+接口类型：Presto</p>
+<h3 id="-38">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryVodTopN</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101</td>
+<td>地区代码，参见地区代码表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-39">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> PROGRAMNAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">节目名称</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视人数</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视次数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWDURATION</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视时长，单位：小时</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u76f4u64adu9891u9053u6536u89c6u6392u884c0a3ca20id3du67e5u8be2u76f4u64adu9891u9053u6536u89c6u6392u884c3e203ca3e">查询直播频道收视排行
+<a id=查询直播频道收视排行> </a></h2>
+<p></p>
+<h3 id="-40">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>功能：查询直播频道收视时长排行榜，包括收视人数，收视次数和收视时长和收视率。时间范围为最近一天。<br>
+描述：直播收视内容在bi_viewlog_c3.BKR_CHANNEL_ALL_LIANTONG_HISTORY中，可以根据substr(a.areacode,1,3)为条件判断记录属于哪个省，每个频道的收视率=当前频道的收视人数/总的频道收视人数<br>
+接口类型：Presto</p>
+<h3 id="-41">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryLiveTVTopN</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101</td>
+<td>地区代码，参见地区代码表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-42">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> CHANNELNAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">频道名称</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视人数</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视次数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWDURATION</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视时长，单位：小时</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> RTG</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视率</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u7528u6237u53d1u5c55">用户发展</h1>
+<p></p>
+<h2 id="u67e5u8be2u4e0du540cu5e74u9f84u6bb5u5f00u673au7528u62370a3ca20id3du67e5u8be2u4e0du540cu5e74u9f84u6bb5u5f00u673au7528u62373e203ca3e">查询不同年龄段开机用户
+<a id=查询不同年龄段开机用户> </a></h2>
+<p></p>
+<h3 id="-43">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>分年龄段查询开机用户数,时间范围为最近一天。</p>
+<h3 id="-44">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAgeBootUser</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-45">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AGELEVEL</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">年龄段1:少年（0~20岁）2：青年（20~40岁）3：中年（40~60岁）4：老年（60以上）</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AGELEVELNAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">年龄段名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> BOOTUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">开机用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> BOOTRATE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">开机率</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u4e0du540cu7f51u7edcu63a5u5165u7528u6237u5360u6bd40a3ca20id3du67e5u8be2u4e0du540cu7f51u7edcu63a5u5165u7528u6237u5360u6bd43e203ca3e">查询不同网络接入用户占比
+<a id=查询不同网络接入用户占比> </a></h2>
+<p></p>
+<h3 id="-46">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询不同网络接入用户占比。</p>
+<h3 id="-47">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryNetModeUser</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>999</td>
+<td>区域代码，参见区域代码表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-48">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> WIFIRATE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">wifi接入比例</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> WANRATE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">宽带接入比例</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> BANDRATE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">宽带渗透率</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u533au57dfu7528u6237u65700a3ca20id3du67e5u8be2u533au57dfu7528u6237u65703e203ca3e">查询区域用户数
+<a id=查询区域用户数> </a></h2>
+<p></p>
+<h3 id="-49">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>依据终端属性（高清，标清，4K，其他)查询区域用户数,时间范围为最近一天。终端类型 1:标清,2:高清,3:4K,4:其他</p>
+<h3 id="-50">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaUserByStb</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>test1</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>00699780e98bb340761e0f285c2bedbe</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-51">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT_STANDARD</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">标清区域用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT_HIGH</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">高清区域用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT_4K</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">4K区域用户数</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT_OTHER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">其他区域用户数</span></td><td key=5></td></tr><tr key=0-3-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">全国用户数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u5728u7ebfu60c5u51b50a3ca20id3du67e5u8be2u5728u7ebfu60c5u51b53e203ca3e">查询在线情况
+<a id=查询在线情况> </a></h2>
+<p></p>
+<h3 id="-52">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询区域用户在线情况，包括在线人数，次数，在线时长，用户在线平均次数，用户在线平均时长，时间范围为最近一天。月均活跃率=该省该月开机用户数/该省全部用户数;日均在线=该省该天开机次数/开机人数;日均时长=该省该天开机时长/开机人数</p>
+<h3 id="-53">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaOnlineUser</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>test1</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>00699780e98bb340761e0f285c2bedbe</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-54">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">在线人数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> USERTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">在线次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> DURATION</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">在线时长</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AVGTIMES</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">日均在线次数</span></td><td key=5></td></tr><tr key=0-3-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AVGDURATION</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">日均在线时长</span></td><td key=5></td></tr><tr key=0-3-7><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> MONTHAVGACTIVERATE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">月均活跃率</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u7528u6237u53d1u5c550a3ca20id3du67e5u8be2u7528u6237u53d1u5c553e203ca3e">查询用户发展
+<a id=查询用户发展> </a></h2>
+<p></p>
+<h3 id="-55">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询区域用户发展，包括总用户数，新增用户数，激活用户数，时间范围为最近12个月</p>
+<h3 id="-56">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaUserDevelop</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>test1</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>00699780e98bb340761e0f285c2bedbe</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>101','104','114','128</td>
+<td>北京：101;重庆：104;吉林：114；山西: 128</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-57">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOTALUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域总用户数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> NEWCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域新增用户数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> ACTIVECOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域激活用户数</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> OFFCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域销户用户数</span></td><td key=5></td></tr><tr key=0-3-6><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> MONTHDAY</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">时间</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u4e1au52a1u8d28u91cf">业务质量</h1>
+<p></p>
+<h2 id="u67e5u8be2u89c6u9891u8d28u91cf0a3ca20id3du67e5u8be2u89c6u9891u8d28u91cf3e203ca3e">查询视频质量
+<a id=查询视频质量> </a></h2>
+<p></p>
+<h3 id="-58">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>按区域查询视频质量MOS评分</p>
+<h3 id="-59">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryAreaMos</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-60">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> VIEWTYPE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">收视类型 1：直播 2：点播</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AVGMOS</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">MOS平均值</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> WEAKCOUNT</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">质差次数</span></td><td key=5></td></tr><tr key=0-3-5><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> WEAKUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">质差用户数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u8d28u5deeu7528u62370a3ca20id3du67e5u8be2u8d28u5deeu7528u62373e203ca3e">查询质差用户
+<a id=查询质差用户> </a></h2>
+<p></p>
+<h3 id="-61">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>按区域查询质差用户数和次数</p>
+<h3 id="-62">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryMosWeak</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-63">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> WEAKCOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">质差次数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> WEAKUSER</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">质差用户数</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u4e1au52a1u4ea4u4e92u65f6u5ef60a3ca20id3du67e5u8be2u4e1au52a1u4ea4u4e92u65f6u5ef63e203ca3e">查询业务交互时延
+<a id=查询业务交互时延> </a></h2>
+<p></p>
+<h3 id="-64">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询各种网络传输方式请求平均时延。</p>
+<h3 id="-65">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryInservTimeDelay</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>nettype</td>
+<td>text</td>
+<td>是</td>
+<td>1</td>
+<td>网络传输方式 1:单播 2：组播 3：EPG</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-66">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> MONTHDAY</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">日期，格式YYYY-MM-DD</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> CONNTYPE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">网络连接方式 值为LAN/WiFi</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TIMEDELAY</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">平均请求时延</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u4e1au52a1u4ea4u4e92u6210u529fu73870a3ca20id3du67e5u8be2u4e1au52a1u4ea4u4e92u6210u529fu73873e203ca3e">查询业务交互成功率
+<a id=查询业务交互成功率> </a></h2>
+<p></p>
+<h3 id="-67">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询各种网络传输方式请求平均成功率。</p>
+<h3 id="-68">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryInservSuccRate</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-69">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> NETTYPE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">网络传输方式 1:单播 2：组播 3：EPG</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> MONTHDAY</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">统计日期，格式YYYYMMDD</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> REQTOTAL</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总请求次数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> REQSUCC</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">请求成功次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> SUCCRATE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">请求成功率</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2cdnu4ea4u4e92u8d28u91cf0a3ca20id3du67e5u8be2cdnu4ea4u4e92u8d28u91cf3e203ca3e">查询CDN交互质量
+<a id=查询CDN交互质量> </a></h2>
+<p></p>
+<h3 id="-70">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询CDN命中率情况，时间范围为最近一天。</p>
+<h3 id="-71">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryCdnQuality</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-72">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREACODE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域代码</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> AREANAME</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">区域名称</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> HITSERVICE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">CDN归属用户次数</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> HITNUM</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">CDN命中次数</span></td><td key=5></td></tr><tr key=0-3-4><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> HITRATE</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">命中率</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h2 id="u67e5u8be2u5185u5bb9u6e05u6670u5ea60a3ca20id3du67e5u8be2u5185u5bb9u6e05u6670u5ea63e203ca3e">查询内容清晰度
+<a id=查询内容清晰度> </a></h2>
+<p></p>
+<h3 id="-73">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<p>查询当前直播频道和点播内容清晰度属性（高清、标清和4K、其他）</p>
+<h3 id="-74">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>queryContentDefinition</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>superman</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>token</td>
+<td>text</td>
+<td>是</td>
+<td>HDdt7Zhq5qjWzddDMAni9u1G</td>
+<td>访问用户token</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>text</td>
+<td>是</td>
+<td>20</td>
+<td>分页参数每页大小</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>text</td>
+<td>是</td>
+<td>0</td>
+<td>分页参数起始位置</td>
+</tr>
+<tr>
+<td>contenttype</td>
+<td>text</td>
+<td>是</td>
+<td>1</td>
+<td>内容类型 1：频道 2：点播节目</td>
+</tr>
+<tr>
+<td>areacode</td>
+<td>text</td>
+<td>是</td>
+<td>114</td>
+<td>区域编码，参见区域编码表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-75">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object []</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5><p key=3><span style="font-weight: '700'">item 类型: </span><span>object</span></p></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> CONTENTTYPE</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">内容类型 1：频道 2：点播节目</span></td><td key=5></td></tr><tr key=0-3-1><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TYPECOUNT</span></td><td key=1><span>number</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">数量</span></td><td key=5></td></tr><tr key=0-3-2><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TYPEALLCOUNT</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总数量</span></td><td key=5></td></tr><tr key=0-3-3><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> RESOLUTION</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">分辨率：标清；高清；4K；其他	</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+<h1 id="u516cu5171">公共</h1>
+<p></p>
+<h2 id="u5730u533au4ee3u7801u88680a3ca20id3du5730u533au4ee3u7801u88683e203ca3e">地区代码表
+<a id=地区代码表> </a></h2>
+<p></p>
+<h3 id="-76">基本信息</h3>
+<p><strong>Path：</strong> /mobileservice/query</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>省份代码</td>
+<td>地区代码</td>
+<td>地区名称</td>
+</tr>
+<tr>
+<td></td>
+<td>101</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>101</td>
+<td>10100</td>
+<td>北京</td>
+</tr>
+<tr>
+<td></td>
+<td>102</td>
+<td>上海</td>
+</tr>
+<tr>
+<td>102</td>
+<td>10201</td>
+<td>上海</td>
+</tr>
+<tr>
+<td></td>
+<td>103</td>
+<td>广东</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10301</td>
+<td>广州</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10302</td>
+<td>深圳</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10303</td>
+<td>珠海</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10304</td>
+<td>汕头</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10305</td>
+<td>韶关</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10306</td>
+<td>河源</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10307</td>
+<td>梅州</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10308</td>
+<td>惠州</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10309</td>
+<td>汕尾</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10310</td>
+<td>东莞</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10311</td>
+<td>中山</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10312</td>
+<td>江门</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10313</td>
+<td>佛山</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10314</td>
+<td>阳江</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10315</td>
+<td>湛江</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10316</td>
+<td>茂名</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10317</td>
+<td>肇庆</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10318</td>
+<td>清远</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10319</td>
+<td>潮州</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10320</td>
+<td>揭阳</td>
+</tr>
+<tr>
+<td>103</td>
+<td>10321</td>
+<td>云浮</td>
+</tr>
+<tr>
+<td></td>
+<td>104</td>
+<td>重庆</td>
+</tr>
+<tr>
+<td>104</td>
+<td>10401</td>
+<td>重庆</td>
+</tr>
+<tr>
+<td></td>
+<td>105</td>
+<td>湖南</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10501</td>
+<td>长沙</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10502</td>
+<td>株洲</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10503</td>
+<td>湘潭</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10504</td>
+<td>衡阳</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10505</td>
+<td>邵阳</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10506</td>
+<td>岳阳</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10507</td>
+<td>常德</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10508</td>
+<td>张家界</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10509</td>
+<td>益阳</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10510</td>
+<td>郴州</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10511</td>
+<td>永州</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10512</td>
+<td>怀化</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10513</td>
+<td>娄底</td>
+</tr>
+<tr>
+<td>105</td>
+<td>10514</td>
+<td>湘西自治州</td>
+</tr>
+<tr>
+<td></td>
+<td>106</td>
+<td>青海</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10601</td>
+<td>西宁</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10602</td>
+<td>海东地区</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10603</td>
+<td>海北自治州</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10604</td>
+<td>黄南自治州</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10605</td>
+<td>海南自治州</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10606</td>
+<td>果洛自治州</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10607</td>
+<td>玉树自治州</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10608</td>
+<td>海西自治州</td>
+</tr>
+<tr>
+<td>106</td>
+<td>10609</td>
+<td>格尔木_del</td>
+</tr>
+<tr>
+<td></td>
+<td>107</td>
+<td>安徽</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10701</td>
+<td>合肥</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10702</td>
+<td>芜湖</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10703</td>
+<td>蚌璋</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10704</td>
+<td>淮南</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10705</td>
+<td>马鞍山</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10706</td>
+<td>淮北</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10707</td>
+<td>铜陵</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10708</td>
+<td>安庆</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10709</td>
+<td>黄山</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10710</td>
+<td>滁州</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10711</td>
+<td>阜阳</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10712</td>
+<td>宿州</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10714</td>
+<td>六安</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10715</td>
+<td>毫州</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10716</td>
+<td>池州</td>
+</tr>
+<tr>
+<td>107</td>
+<td>10717</td>
+<td>宣城</td>
+</tr>
+<tr>
+<td></td>
+<td>108</td>
+<td>福建</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10801</td>
+<td>福州</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10802</td>
+<td>厦门</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10803</td>
+<td>三明</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10804</td>
+<td>莆田</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10805</td>
+<td>泉州</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10806</td>
+<td>漳州</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10807</td>
+<td>南平</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10808</td>
+<td>龙岩</td>
+</tr>
+<tr>
+<td>108</td>
+<td>10809</td>
+<td>宁德</td>
+</tr>
+<tr>
+<td></td>
+<td>109</td>
+<td>甘肃</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10901</td>
+<td>兰州</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10902</td>
+<td>金昌</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10903</td>
+<td>白银</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10904</td>
+<td>天水</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10905</td>
+<td>嘉峪关</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10906</td>
+<td>武威</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10907</td>
+<td>张掖</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10908</td>
+<td>平凉</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10909</td>
+<td>酒泉</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10910</td>
+<td>庆阳</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10911</td>
+<td>定西</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10912</td>
+<td>陇南</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10913</td>
+<td>甘南自治州</td>
+</tr>
+<tr>
+<td>109</td>
+<td>10914</td>
+<td>临夏自治州</td>
+</tr>
+<tr>
+<td></td>
+<td>110</td>
+<td>广西</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11001</td>
+<td>南宁</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11002</td>
+<td>柳州</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11003</td>
+<td>桂林</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11004</td>
+<td>梧州</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11005</td>
+<td>北海</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11006</td>
+<td>防城港</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11007</td>
+<td>钦州</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11008</td>
+<td>贵港</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11009</td>
+<td>玉林</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11010</td>
+<td>百色</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11011</td>
+<td>贺州</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11012</td>
+<td>河池</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11013</td>
+<td>来宾</td>
+</tr>
+<tr>
+<td>110</td>
+<td>11014</td>
+<td>崇左</td>
+</tr>
+<tr>
+<td></td>
+<td>111</td>
+<td>海南</td>
+</tr>
+<tr>
+<td>111</td>
+<td>11101</td>
+<td>海口</td>
+</tr>
+<tr>
+<td>111</td>
+<td>11102</td>
+<td>三亚</td>
+</tr>
+<tr>
+<td>111</td>
+<td>11120</td>
+<td>三沙</td>
+</tr>
+<tr>
+<td></td>
+<td>112</td>
+<td>江西</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11201</td>
+<td>南昌</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11202</td>
+<td>景德镇</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11203</td>
+<td>萍乡</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11204</td>
+<td>九江</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11205</td>
+<td>新余</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11206</td>
+<td>鹰潭</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11207</td>
+<td>赣州</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11208</td>
+<td>吉安</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11209</td>
+<td>宜舂</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11210</td>
+<td>抚州</td>
+</tr>
+<tr>
+<td>112</td>
+<td>11211</td>
+<td>上饶</td>
+</tr>
+<tr>
+<td></td>
+<td>113</td>
+<td>天津</td>
+</tr>
+<tr>
+<td>113</td>
+<td>11301</td>
+<td>天津</td>
+</tr>
+<tr>
+<td></td>
+<td>114</td>
+<td>吉林</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11401</td>
+<td>长春</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11402</td>
+<td>吉林</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11403</td>
+<td>四平</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11404</td>
+<td>辽源</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11405</td>
+<td>通化</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11406</td>
+<td>白山</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11407</td>
+<td>松原</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11408</td>
+<td>白城</td>
+</tr>
+<tr>
+<td>114</td>
+<td>11409</td>
+<td>延边</td>
+</tr>
+<tr>
+<td></td>
+<td>115</td>
+<td>黑龙江</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11501</td>
+<td>哈尔滨</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11502</td>
+<td>齐齐哈尔</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11503</td>
+<td>鹤岗</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11504</td>
+<td>双鸭山</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11505</td>
+<td>鸡西</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11506</td>
+<td>大庆</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11507</td>
+<td>伊春</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11508</td>
+<td>牡丹江</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11509</td>
+<td>佳木斯</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11510</td>
+<td>七台河</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11511</td>
+<td>黑河</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11512</td>
+<td>绥化</td>
+</tr>
+<tr>
+<td>115</td>
+<td>11513</td>
+<td>大兴安岭地区</td>
+</tr>
+<tr>
+<td></td>
+<td>116</td>
+<td>辽宁</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11601</td>
+<td>沈阳</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11602</td>
+<td>大连</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11603</td>
+<td>鞍山</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11604</td>
+<td>抚顺</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11605</td>
+<td>本溪</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11606</td>
+<td>丹东</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11607</td>
+<td>锦州</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11608</td>
+<td>葫芦岛</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11609</td>
+<td>营口</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11610</td>
+<td>盘锦</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11611</td>
+<td>阜新</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11612</td>
+<td>辽阳</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11613</td>
+<td>铁岭</td>
+</tr>
+<tr>
+<td>116</td>
+<td>11614</td>
+<td>朝阳</td>
+</tr>
+<tr>
+<td></td>
+<td>117</td>
+<td>湖北</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11701</td>
+<td>武汉</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11702</td>
+<td>黄石</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11703</td>
+<td>襄阳</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11704</td>
+<td>十堰</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11705</td>
+<td>荆州</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11706</td>
+<td>宜昌</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11707</td>
+<td>荆门</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11708</td>
+<td>鄂州</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11709</td>
+<td>孝感</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11710</td>
+<td>黄冈</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11711</td>
+<td>咸宁</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11712</td>
+<td>随州</td>
+</tr>
+<tr>
+<td>117</td>
+<td>11713</td>
+<td>恩施自治州</td>
+</tr>
+<tr>
+<td></td>
+<td>118</td>
+<td>新疆</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11801</td>
+<td>乌鲁木齐</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11802</td>
+<td>克拉玛依</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11804</td>
+<td>吐鲁番地区</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11805</td>
+<td>哈密地区</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11806</td>
+<td>和田地区</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11807</td>
+<td>阿克苏地区</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11808</td>
+<td>喀什地区</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11809</td>
+<td>克孜勒苏自治州</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11810</td>
+<td>巴音郭楞自治州</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11811</td>
+<td>昌吉自治州</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11812</td>
+<td>博尔塔拉自治州</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11813</td>
+<td>伊犁自治州</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11814</td>
+<td>塔城地区</td>
+</tr>
+<tr>
+<td>118</td>
+<td>11815</td>
+<td>阿勒泰地区</td>
+</tr>
+<tr>
+<td></td>
+<td>119</td>
+<td>宁夏</td>
+</tr>
+<tr>
+<td>119</td>
+<td>11901</td>
+<td>银川</td>
+</tr>
+<tr>
+<td>119</td>
+<td>11902</td>
+<td>石嘴山</td>
+</tr>
+<tr>
+<td>119</td>
+<td>11903</td>
+<td>吴忠</td>
+</tr>
+<tr>
+<td>119</td>
+<td>11904</td>
+<td>固原</td>
+</tr>
+<tr>
+<td>119</td>
+<td>11905</td>
+<td>中卫</td>
+</tr>
+<tr>
+<td></td>
+<td>120</td>
+<td>云南</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12001</td>
+<td>昆明</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12002</td>
+<td>曲靖</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12003</td>
+<td>玉溪</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12004</td>
+<td>保山</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12005</td>
+<td>昭通</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12006</td>
+<td>普洱</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12007</td>
+<td>临沧</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12008</td>
+<td>丽江</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12009</td>
+<td>文山自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12010</td>
+<td>红河自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12011</td>
+<td>西双版纳自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12012</td>
+<td>楚雄自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12013</td>
+<td>大理自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12014</td>
+<td>德宏自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12015</td>
+<td>怒江自治州</td>
+</tr>
+<tr>
+<td>120</td>
+<td>12016</td>
+<td>迪庆自治州</td>
+</tr>
+<tr>
+<td></td>
+<td>121</td>
+<td>浙江</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12101</td>
+<td>杭州</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12102</td>
+<td>宁波</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12103</td>
+<td>温州</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12104</td>
+<td>嘉兴</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12105</td>
+<td>湖州</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12106</td>
+<td>绍兴</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12107</td>
+<td>金华</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12108</td>
+<td>衢州</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12109</td>
+<td>舟山</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12110</td>
+<td>台州</td>
+</tr>
+<tr>
+<td>121</td>
+<td>12111</td>
+<td>丽水</td>
+</tr>
+<tr>
+<td></td>
+<td>122</td>
+<td>山东</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12201</td>
+<td>济南</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12202</td>
+<td>青岛</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12203</td>
+<td>淄博</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12204</td>
+<td>枣庄</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12205</td>
+<td>东营</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12206</td>
+<td>潍坊</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12207</td>
+<td>烟台</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12208</td>
+<td>威海</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12209</td>
+<td>济宁</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12210</td>
+<td>泰安</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12211</td>
+<td>日照</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12212</td>
+<td>莱芜</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12213</td>
+<td>临沂</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12214</td>
+<td>德州</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12215</td>
+<td>聊城</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12216</td>
+<td>滨州</td>
+</tr>
+<tr>
+<td>122</td>
+<td>12217</td>
+<td>菏泽</td>
+</tr>
+<tr>
+<td></td>
+<td>123</td>
+<td>西藏</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12301</td>
+<td>拉萨</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12302</td>
+<td>那曲地区</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12303</td>
+<td>昌都地区</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12304</td>
+<td>山南地区</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12305</td>
+<td>日喀则地区</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12306</td>
+<td>阿里地区</td>
+</tr>
+<tr>
+<td>123</td>
+<td>12307</td>
+<td>林芝地区</td>
+</tr>
+<tr>
+<td></td>
+<td>124</td>
+<td>内蒙古</td>
+</tr>
+<tr>
+<td></td>
+<td>124</td>
+<td>内蒙</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12401</td>
+<td>呼和浩特</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12402</td>
+<td>包头</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12403</td>
+<td>乌海</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12404</td>
+<td>赤峰</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12405</td>
+<td>通辽</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12406</td>
+<td>鄂尔多斯</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12407</td>
+<td>呼伦贝尔</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12408</td>
+<td>乌兰察布</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12409</td>
+<td>锡林郭勒盟</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12410</td>
+<td>巴彦淖尔</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12411</td>
+<td>阿拉善盟</td>
+</tr>
+<tr>
+<td>124</td>
+<td>12412</td>
+<td>兴安盟</td>
+</tr>
+<tr>
+<td></td>
+<td>125</td>
+<td>河南</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12501</td>
+<td>郑州</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12502</td>
+<td>开封</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12503</td>
+<td>洛阳</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12504</td>
+<td>平顶山</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12505</td>
+<td>焦作</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12506</td>
+<td>鹤壁</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12507</td>
+<td>新乡</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12508</td>
+<td>安阳</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12509</td>
+<td>濮阳</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12510</td>
+<td>许昌</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12511</td>
+<td>漯河</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12512</td>
+<td>三门峡</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12513</td>
+<td>南阳</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12514</td>
+<td>商丘</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12515</td>
+<td>信阳</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12516</td>
+<td>周口</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12517</td>
+<td>驻马店</td>
+</tr>
+<tr>
+<td>125</td>
+<td>12518</td>
+<td>济源</td>
+</tr>
+<tr>
+<td></td>
+<td>126</td>
+<td>四川</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12601</td>
+<td>成都</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12602</td>
+<td>自贡</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12603</td>
+<td>攀枝花</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12604</td>
+<td>泸州</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12605</td>
+<td>德阳</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12606</td>
+<td>绵阳</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12607</td>
+<td>广元</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12608</td>
+<td>遂宁</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12609</td>
+<td>内江</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12610</td>
+<td>乐山</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12611</td>
+<td>南充</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12612</td>
+<td>宜宾</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12613</td>
+<td>广安</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12614</td>
+<td>达州</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12615</td>
+<td>眉山</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12616</td>
+<td>雅安</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12617</td>
+<td>巴中</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12618</td>
+<td>资阳</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12619</td>
+<td>阿坝自治州</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12620</td>
+<td>甘孜自治州</td>
+</tr>
+<tr>
+<td>126</td>
+<td>12621</td>
+<td>凉山自治州</td>
+</tr>
+<tr>
+<td></td>
+<td>127</td>
+<td>河北</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12701</td>
+<td>石家庄</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12702</td>
+<td>唐山</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12703</td>
+<td>秦皇岛</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12704</td>
+<td>邯郸</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12705</td>
+<td>邢台</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12706</td>
+<td>保定</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12707</td>
+<td>张家口</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12708</td>
+<td>承德</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12709</td>
+<td>沧州</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12710</td>
+<td>廊坊</td>
+</tr>
+<tr>
+<td>127</td>
+<td>12711</td>
+<td>衡水</td>
+</tr>
+<tr>
+<td></td>
+<td>128</td>
+<td>山西</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12801</td>
+<td>太原</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12802</td>
+<td>大同</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12803</td>
+<td>阳泉</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12804</td>
+<td>长治</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12805</td>
+<td>晋城</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12806</td>
+<td>朔州</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12807</td>
+<td>晋中</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12808</td>
+<td>运城</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12809</td>
+<td>忻州</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12810</td>
+<td>临汾</td>
+</tr>
+<tr>
+<td>128</td>
+<td>12811</td>
+<td>吕梁地</td>
+</tr>
+<tr>
+<td></td>
+<td>129</td>
+<td>陕西</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12901</td>
+<td>西安</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12902</td>
+<td>铜川</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12903</td>
+<td>宝鸡</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12904</td>
+<td>咸阳</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12905</td>
+<td>渭南</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12906</td>
+<td>延安</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12907</td>
+<td>汉中</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12908</td>
+<td>榆林</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12909</td>
+<td>安康</td>
+</tr>
+<tr>
+<td>129</td>
+<td>12910</td>
+<td>商洛</td>
+</tr>
+<tr>
+<td></td>
+<td>130</td>
+<td>江苏</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13001</td>
+<td>南京</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13002</td>
+<td>徐州</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13003</td>
+<td>连云港</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13004</td>
+<td>淮安</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13005</td>
+<td>宿迁</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13006</td>
+<td>盐城</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13007</td>
+<td>扬州</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13008</td>
+<td>泰州</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13009</td>
+<td>南通</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13010</td>
+<td>镇江</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13011</td>
+<td>常州</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13012</td>
+<td>无锡</td>
+</tr>
+<tr>
+<td>130</td>
+<td>13013</td>
+<td>苏州</td>
+</tr>
+<tr>
+<td></td>
+<td>131</td>
+<td>贵州</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13101</td>
+<td>贵阳</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13102</td>
+<td>六盘水</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13103</td>
+<td>遵义</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13104</td>
+<td>安顺</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13105</td>
+<td>铜仁</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13106</td>
+<td>毕节</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13107</td>
+<td>黔西南自治州</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13108</td>
+<td>黔东南自治州</td>
+</tr>
+<tr>
+<td>131</td>
+<td>13109</td>
+<td>黔南自治州</td>
+</tr>
+<tr>
+<td></td>
+<td>600</td>
+<td>台湾</td>
+</tr>
+<tr>
+<td>600</td>
+<td>60001</td>
+<td>台湾</td>
+</tr>
+<tr>
+<td></td>
+<td>700</td>
+<td>澳门</td>
+</tr>
+<tr>
+<td>700</td>
+<td>70001</td>
+<td>澳门</td>
+</tr>
+<tr>
+<td></td>
+<td>800</td>
+<td>香港</td>
+</tr>
+<tr>
+<td>800</td>
+<td>80001</td>
+<td>香港</td>
+</tr>
+<tr>
+<td></td>
+<td>999</td>
+<td>全国</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-77">请求参数</h3>
+<h3 id="-78">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody">
+               </tbody>
+              </table>
+<h2 id="u9519u8befu4ee3u7801u88680a3ca20id3du9519u8befu4ee3u7801u88683e203ca3e">错误代码表
+<a id=错误代码表> </a></h2>
+<p></p>
+<h3 id="-79">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/query</p>
+<p><strong>Method：</strong> GET</p>
+<p><strong>接口描述：</strong></p>
+<table>
+<thead>
+<tr>
+<th>错误代码</th>
+<th>标识</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-10001</td>
+<td>QDI_NOT_FOUND</td>
+<td>未发现QDI参数</td>
+</tr>
+<tr>
+<td>-10002</td>
+<td>NO_PARA_FOUND</td>
+<td>mapper内sql出错或者参数不正确</td>
+</tr>
+<tr>
+<td>-10003</td>
+<td>TOKEN_NOT_FOUND</td>
+<td>token串不存在</td>
+</tr>
+<tr>
+<td>-10004</td>
+<td>TOKEN_NOT_CORRECT</td>
+<td>token串错误</td>
+</tr>
+<tr>
+<td>-10005</td>
+<td>INTERNAL_ERROR</td>
+<td>数据源出错</td>
+</tr>
+<tr>
+<td>-10006</td>
+<td>USERID_NOT_FOUND</td>
+<td>userid不存在</td>
+</tr>
+<tr>
+<td>-10007</td>
+<td>PARA_NOT_COMPLETE</td>
+<td>参数不齐全</td>
+</tr>
+<tr>
+<td>-10008</td>
+<td>PASS_NOT_SAME</td>
+<td>两次密码不一致</td>
+</tr>
+<tr>
+<td>-10009</td>
+<td>PASS_UPDATE_FAIL</td>
+<td>修改密码失败</td>
+</tr>
+<tr>
+<td>-10010</td>
+<td>MSG_EMPTY</td>
+<td>发送的建议不能为空</td>
+</tr>
+<tr>
+<td>-10011</td>
+<td>MSG_SEND_FAIL</td>
+<td>发送的建议失败</td>
+</tr>
+<tr>
+<td>-10012</td>
+<td>MOBILE_NOT_BIND</td>
+<td>版本已是最新</td>
+</tr>
+<tr>
+<td>-10013</td>
+<td>BIND_MAC_ERROR</td>
+<td>绑定MAC失败</td>
+</tr>
+<tr>
+<td>-10014</td>
+<td>GET_REDIS_CACHE_ERROR</td>
+<td>查询redis缓存报错</td>
+</tr>
+<tr>
+<td>-10015</td>
+<td>QUERY_DATABASE_ERROR</td>
+<td>查询数据库报错</td>
+</tr>
+<tr>
+<td>-10016</td>
+<td>DELETE_ERROR</td>
+<td>删除失败</td>
+</tr>
+<tr>
+<td>-10017</td>
+<td>UPDATE_ERROR</td>
+<td>修改失败</td>
+</tr>
+<tr>
+<td>-10018</td>
+<td>PASSWORD_NOT_EXIST</td>
+<td>密码不存在</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-80">请求参数</h3>
+<h1 id="u7528u6237u7ba1u7406">用户管理</h1>
+<p></p>
+<h2 id="u7528u6237u767bu96460a3ca20id3du7528u6237u767bu96463e203ca3e">用户登陆
+<a id=用户登陆> </a></h2>
+<p></p>
+<h3 id="-81">基本信息</h3>
+<p><strong>Path：</strong> /screenservice/login</p>
+<p><strong>Method：</strong> POST</p>
+<p><strong>接口描述：</strong></p>
+<h3 id="-82">请求参数</h3>
+<p><strong>Headers</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数值</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Type</td>
+<td>application/x-www-form-urlencoded</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Body</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>是否必须</th>
+<th>示例</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qdi</td>
+<td>text</td>
+<td>是</td>
+<td>login</td>
+<td>qdi接口名称</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>text</td>
+<td>是</td>
+<td>test</td>
+<td>访问用户id</td>
+</tr>
+<tr>
+<td>password</td>
+<td>text</td>
+<td>是</td>
+<td>E10ADC3949BA59ABBE56E057F20F883E</td>
+<td>用户密码的md5加密串，小写</td>
+</tr>
+<tr>
+<td>mac</td>
+<td>text</td>
+<td>是</td>
+<td>fe80::6d18:d4e5:d70:836e#</td>
+<td>mac地址</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-83">返回数据</h3>
+<table>
+  <thead class="ant-table-thead">
+    <tr>
+      <th key=name>名称</th><th key=type>类型</th><th key=required>是否必须</th><th key=default>默认值</th><th key=desc>备注</th><th key=sub>其他信息</th>
+    </tr>
+  </thead><tbody className="ant-table-tbody"><tr key=0-0><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> code</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误代码</span></td><td key=5></td></tr><tr key=0-1><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> export</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap"></span></td><td key=5></td></tr><tr key=0-2><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> msg</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">错误描述</span></td><td key=5></td></tr><tr key=0-3><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> subject</span></td><td key=1><span>object</span></td><td key=2>非必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">返回数组</span></td><td key=5></td></tr><tr key=0-3-0><td key=0><span style="padding-left: 20px"><span style="color: #8c8a8a">├─</span> TOKEN</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">用户token</span></td><td key=5></td></tr><tr key=0-4><td key=0><span style="padding-left: 0px"><span style="color: #8c8a8a"></span> total</span></td><td key=1><span>string</span></td><td key=2>必须</td><td key=3></td><td key=4><span style="white-space: pre-wrap">总记录数</span></td><td key=5></td></tr>
+               </tbody>
+              </table>
+
+            <footer class="m-footer">
+              <p>Build by <a href="https://ymfe.org/">YMFE</a>.</p>
+            </footer>
+          </div>
+        </div>
+      </body>
+      </html>
+      

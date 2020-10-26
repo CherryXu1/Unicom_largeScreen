@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "digifacewide";
+  src: url("digifacewide.woff2") format("woff2"),
+       url("digifacewide.woff") format("woff"),
+       url("digifacewide.ttf") format("truetype"),
+       url("digifacewide.eot") format("embedded-opentype"),
+       url("digifacewide.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

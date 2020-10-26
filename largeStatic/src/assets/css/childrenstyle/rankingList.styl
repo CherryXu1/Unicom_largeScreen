@@ -1,0 +1,121 @@
+.rankingList{
+    display:flex;
+    width: 97%;
+    flex-direction: column;
+    color: #fff;
+    // background: red;
+    .rankingList_title{
+        display: flex;
+        width: 100%;
+        flex-basis: 10%;
+        // border: 1px solid #fff;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        padding-right 5%;
+        span{
+            background: url("./../img/dik.png") no-repeat;
+            background-size: 100% 100%;
+            display: flex;
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                padding: 3px 20px;
+
+            }
+            .active{
+                background: url("./../img/xuanz.png") no-repeat center center;
+                background-size: 100% 100%;
+                color: #33cdda;   
+            }
+        }
+    }
+    .listTitle{
+        display: flex;
+        height: 20%;
+        width: 100%;
+        align-items: center;
+        a{
+            display: flex;
+            width: 40px;
+            margin-left: 10px;
+            margin-right: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+        span{
+            display: flex;
+            flex: 1;
+            font-size: 24px;
+            color: #02C7D8;
+        }  
+    }
+    .listBox{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow:hidden;
+        ul{
+            display: flex;
+            width: 100%;
+            // height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            li{
+                display: flex;
+                height: 55px;
+                min-height: 25px;
+                font-size: 23px;
+                max-height: 55px;
+                align-items: center;
+                box-sizing: border-box;
+                span{
+                    display: flex;
+                    flex: 1;
+                    white-space:nowrap;
+                }
+                a{
+                    display: flex;
+                    background: url('./../img/ellipse04.png') no-repeat;
+                    background-size: 100% 100%;
+                    width: 40px;
+                    height: 40px;
+                    color:#02EEFF;
+                    margin-left: 10px;
+                    margin-right: 15px;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                
+            }
+            li:nth-child(odd){
+                background: #0d1947;
+            }
+            li:nth-child(1) a{
+                color:#E62C00;
+                background: url('./../img/ellipse01.png') no-repeat;
+                background-size: 100% 100%;
+            }
+            li:nth-child(2) a{
+                color:#F99B02;
+                background: url('./../img/ellipse02.png') no-repeat;
+                background-size: 100% 100%;
+            }
+            li:nth-child(3) a{
+                
+                color:#00F56E;
+                background: url('./../img/ellipse03.png') no-repeat;
+                background-size: 100% 100%;
+            }
+            // li:first-child{
+            //     color:#02C7D8;
+            // }    
+        }
+    }
+    
+}
